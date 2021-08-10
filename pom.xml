@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>msa.itemapi</groupId>
-	<artifactId>java-msa-containerapp-employeeapi</artifactId>
+	<artifactId>msa-containerapp-java-employeeapi</artifactId>
 	<version>0.0.1</version>
-	<name>java-msa-containerapp-employeeapi</name>
+	<name>msa-containerapp-java-employeeapi</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

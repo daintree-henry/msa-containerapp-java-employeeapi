@@ -5,6 +5,11 @@
 
 ### API
 
+### 소스 코드 다운로드
+```shell
+git clone https://github.com/daintree-henry/msa-containerapp-java-employeeapi
+```
+
 ### Version 1 - 컨테이너 엔진 한 대에서 배포
 - image registry url (docker hub): 
 - 주요 file 구조:
@@ -13,34 +18,34 @@
   .
   |-- Dockerfile
   |-- pom.xml
-  |-- src
-  |   |-- main
-  |   |   |-- java
-  |   |   |   `-- msa
-  |   |   |       `-- containerapp
-  |   |   |           `-- javarestemployeeapi
-  |   |   |               |-- JavaRestEmployeeApiApplication.java
-  |   |   |               |-- WebConfig.java
-  |   |   |               |-- controller
-  |   |   |               |   `-- rest
-  |   |   |               |       |-- EmployeeManagement.java
-  |   |   |               |       `-- Health.java
-  |   |   |               |-- dao
-  |   |   |               |   `-- EmployeeDAO.java
-  |   |   |               `-- model
-  |   |   |                   |-- employee.java
-  |   |   |                   |-- employees.java
-  |   |   |                   `-- rest
-  |   |   |                       `-- EmployeePayload.java
-  |   |   `-- resources
-  |   |       `-- application.properties
-  |   `-- test
-  |       `-- java
-  |           `-- msa
-  |               `-- containerapp
-  |                   `-- javarestemployeeapi
-  |                       |-- EmployeeDAOTests.java
-  |                       `-- EmployeeManagementTests.java
+  `-- src
+      |-- main
+      |   |-- java
+      |   |   `-- msa
+      |   |       `-- containerapp
+      |   |           `-- javarestemployeeapi
+      |   |               |-- JavaRestEmployeeApiApplication.java
+      |   |               |-- WebConfig.java
+      |   |               |-- controller
+      |   |               |   `-- rest
+      |   |               |       |-- EmployeeManagement.java
+      |   |               |       `-- Health.java
+      |   |               |-- dao
+      |   |               |   `-- EmployeeDAO.java
+      |   |               `-- model
+      |   |                   |-- employee.java
+      |   |                   |-- employees.java
+      |   |                   `-- rest
+      |   |                       `-- EmployeePayload.java
+      |   `-- resources
+      |       `-- application.properties
+      `-- test
+          `-- java
+              `-- msa
+                  `-- containerapp
+                      `-- javarestemployeeapi
+                          |-- EmployeeDAOTests.java
+                          `-- EmployeeManagementTests.java
 ```
 
 ### 실습
@@ -49,7 +54,11 @@
 #### 실습 1
 도커 허브에 배포되어 있는 이미지를 사용하여 컨테이너를 실행합니다.
 ```shell
+#1. 이미지 다운로드
+
+
 #1. 컨테이너 배포
+
 
 #2. API 테스트
 

@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: msa-java-employeeapi
+  labels:
+    app: msa-java-employeeapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msa-java-employeeapi
+  template:
+    metadata:
+      labels:
+        app: msa-java-employeeapi
+    spec:
+      containers:
+        - name: msa-java-employeeapi
+          image: docker.io/dainforest/msa-java-empapi:v1

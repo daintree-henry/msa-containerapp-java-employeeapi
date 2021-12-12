@@ -2,6 +2,8 @@
 스프링 부트 프레임워크로 작성된 간단한 REST API 프로그램입니다.
 
 ### 연관 프로젝트
+[msa-containerapp-go-itemapi](https://github.com/daintree-henry/msa-containerapp-go-itemapi)  
+[msa-containerapp-nodejs-webapp](https://github.com/daintree-henry/msa-containerapp-nodejs-webapp)
 
 ### API
 

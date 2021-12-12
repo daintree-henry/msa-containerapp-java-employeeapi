@@ -13,7 +13,7 @@ public class EmployeeDAO {
 	private static employees list = new employees();
 
 	static {
-		list.getEmployeeList().add(new employee(1, "hyeongyu", "lee", "ringo@gmail.com", "tech", "010-1234-1234"));
+		list.getEmployeeList().add(new employee(1, "hyeongyu", "lee", "daintree-henry@gmail.com", "tech", "010-1234-1234"));
 		list.getEmployeeList().add(new employee(2, "sojung", "choi", "bluestar@gmail.com", "sales", "010-3124-3124"));
 		list.getEmployeeList().add(new employee(3, "junghun", "kim", "kjh@gmail.com", "hr", "010-4212-4222"));
 	}
@@ -48,5 +48,29 @@ public class EmployeeDAO {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public Boolean validateEmployee(int id) {
+		List<employee> employeeList = list.getEmployeeList();
+		employee employee;
+		for (int i = 0; i < employeeList.size(); i++) {
+			employee = employeeList.get(i);
+			if (employee.getId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Integer findLastId() {
+		List<employee> employeeList = list.getEmployeeList();
+		int lastId = 0;
+		for (int i = 0; i < employeeList.size(); i++) {
+			int id = employeeList.get(i).getId();
+			if (lastId < id) {
+				lastId = id;
+			}
+		}
+		return lastId;
 	}
 }

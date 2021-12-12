@@ -30,13 +30,11 @@ public class EmployeeManagement
 	@Autowired
 	private EmployeeDAO employeeDao;
 
-	@ApiOperation(value = "Get JSON representation of a list of all employees")
 	@GetMapping(path = "", produces = "application/json")
 	public List<employee> getEmployees() {
 		return employeeDao.getAllEmployees();
 	}
 
-	@ApiOperation(value = "Get JSON representation of a specified employee")
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ResponseEntity<?> getEmployee(@PathVariable int id) {
 		Optional<employee> foundEmployeeOptional = employeeDao.findEmployee(id);
@@ -47,20 +45,18 @@ public class EmployeeManagement
 		}
 	}
 
-	@ApiOperation(value = "Create a JSON specified employee")
-	@PostMapping(path = "/", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> addEmployee(@RequestBody EmployeePayload employeePayload) {
-		employee employee = new employee(0, employeePayload.getFirstName(), employeePayload.getLastName(), employeePayload.getEmail(), employeePayload.getDepartment(), employeePayload.getPhone());
+		int id = employeeDao.findLastId()+1;
+		employee employee = new employee(id, employeePayload.getFirstName(), employeePayload.getLastName(), employeePayload.getEmail(), employeePayload.getDepartment(), employeePayload.getPhone());
 		employeeDao.addEmployee(employee);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(employee.getId())
-				.toUri();
-		// in the location header of the response return the URL needed to access the
-		// newly created employee and return HttpStatus.CREATED
-		return ResponseEntity.created(location).build();
+		if (employeeDao.validateEmployee(id)){
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
-	@ApiOperation(value = "Delete a specified employee")
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable int id) {
 		if (employeeDao.deleteEmployee(id)) {
@@ -70,7 +66,6 @@ public class EmployeeManagement
 		}
 	}
 
-	@ApiOperation(value = "Update a specified employee")
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<?> updateEmployee(@RequestBody EmployeePayload employeePayload, @PathVariable int id) {
 		Optional<employee> foundEmployeeOptional = employeeDao.findEmployee(id);
@@ -82,6 +77,10 @@ public class EmployeeManagement
 				foundEmployee.setLastName(employeePayload.getLastName());
 			if (employeePayload.getEmail() != null)
 				foundEmployee.setEmail(employeePayload.getEmail());
+			if (employeePayload.getDepartment() != null)
+				foundEmployee.setDepartment(employeePayload.getDepartment());
+			if (employeePayload.getPhone() != null)
+				foundEmployee.setPhone(employeePayload.getPhone());
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

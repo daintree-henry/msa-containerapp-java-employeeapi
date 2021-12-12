@@ -6,7 +6,7 @@ COPY . /app
 
 RUN mvn clean package
 
-FROM openjdk:8-jre
+FROM openjdk:8-jre-alpine
 
 COPY --from=builder /app/target/*.jar ./app.jar
 

@@ -2,13 +2,10 @@ kind: Service
 apiVersion: v1
 metadata:
   name: emp
-  labels:
-    app: employee
 spec:
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
   selector:
-    app: msa-java-employeeapi
-    deploymentconfig: msa-java-employeeapi
+    app: employee

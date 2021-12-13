@@ -1,15 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: msa-java-employeeapi
+  name: empapi
   labels:
-    app: msa-java-employeeapi
+    app: employee
 spec:
-  type: ClusterIP
   ports:
-    - name: 8080-tcp
-      protocol: TCP
-      port: 8080
+    - protocol: TCP
+      port: 80
       targetPort: 8080
   selector:
     app: msa-java-employeeapi
